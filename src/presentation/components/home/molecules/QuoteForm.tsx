@@ -88,7 +88,17 @@ export const QuoteForm: React.FC = () => {
           name="contacto"
           control={control}
           defaultValue=""
-          rules={{ required: "Este campo es obligatorio" }}
+          rules={{
+            required: "Este campo es obligatorio",
+            pattern: {
+              value: /^[0-9]+$/, // Solo números
+              message: "Solo se permiten números",
+            },
+            minLength: {
+              value: 10,
+              message: "Debe tener al menos 10 dígitos",
+            },
+          }}
           render={({ field }) => (
             <TextField
               {...field}
@@ -96,6 +106,10 @@ export const QuoteForm: React.FC = () => {
               fullWidth
               error={!!errors.contacto}
               helperText={errors.contacto ? errors.contacto.message : ""}
+              inputProps={{
+                maxLength: 15, // Opcional: limita el número máximo de dígitos, puedes ajustarlo según necesites
+                inputMode: "numeric", // Muestra el teclado numérico en dispositivos móviles
+              }}
             />
           )}
         />

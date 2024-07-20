@@ -2,7 +2,7 @@ import { AppBar, Typography, Box } from "@mui/material";
 import { Container } from "../Container";
 import PetsIcon from "@mui/icons-material/Pets";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../../../navigation/routes";
+import { routesHeader } from "../../../navigation/routes";
 import { LinkHeader } from "./atoms/LinkHeader";
 
 export const Header = () => {
@@ -25,7 +25,7 @@ export const Header = () => {
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            {routes.map((route) => (
+            {routesHeader.map((route) => (
               <LinkHeader
                 key={route.id}
                 label={route.label!}

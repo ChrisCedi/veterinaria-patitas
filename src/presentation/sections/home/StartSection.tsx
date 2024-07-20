@@ -49,9 +49,9 @@ export const StartSection = () => {
           sx={{ paddingBottom: 4 }}
           textAlign="center"
         >
-          Veterinaria Patitas
+          Veterinaria patitas
         </Typography>
-        <Typography sx={{ paddingY: 3, fontWeight: 600 }}>
+        <Typography sx={{ paddingY: 3, fontWeight: 400 }}>
           Nos dedicamos a ofrecer el mejor cuidado para tus fieles compañeros.
           Nuestra misión es proporcionar atención veterinaria de alta calidad en
           un ambiente cálido y acogedor.

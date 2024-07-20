@@ -15,6 +15,8 @@ export const Header = () => {
           <Box>
             <Typography
               display="flex"
+              alignItems="center"
+              variant="h6"
               fontWeight={600}
               sx={{ cursor: "pointer" }}
               onClick={() => navigate("/")}

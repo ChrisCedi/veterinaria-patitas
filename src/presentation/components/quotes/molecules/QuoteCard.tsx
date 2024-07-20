@@ -1,14 +1,35 @@
-import { Card, CardContent, Grid, Typography, Button } from "@mui/material";
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  Button,
+  Dialog,
+} from "@mui/material";
 import { QuoteFormValues } from "../../../../types/types";
 import { useNavigate } from "react-router-dom";
 import { format } from "@formkit/tempo";
+import { DeleteDialog } from "./DeleteDialog";
+import { useQuotesStore } from "../../../store/useQuotesStore";
 
 interface Props {
   quote: QuoteFormValues;
 }
 
 export const QuoteCard = ({ quote }: Props) => {
+  const { removeQuote } = useQuotesStore();
   const navigate = useNavigate();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Card>
@@ -46,12 +67,26 @@ export const QuoteCard = ({ quote }: Props) => {
             >
               Detalles
             </Button>
-            <Button variant="outlined" color="error" size="small">
+            <Button
+              variant="outlined"
+              color="error"
+              size="small"
+              onClick={() => handleClickOpen()}
+            >
               Borrar
             </Button>{" "}
           </Grid>
         </Grid>
       </CardContent>
+      <Dialog open={open} onClose={handleClose}>
+        <DeleteDialog
+          handleClose={handleClose}
+          handleDelete={() => {
+            removeQuote(quote.id);
+            handleClose();
+          }}
+        />
+      </Dialog>
     </Card>
   );
 };

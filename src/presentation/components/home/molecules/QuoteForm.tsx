@@ -3,24 +3,18 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { TextField, Button, MenuItem, Grid, Dialog } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { SubmitDialog } from "./SubmitDialog";
-
-type FormValues = {
-  responsable: string;
-  email: string;
-  contacto: string;
-  mascota: string;
-  razon: string;
-  fechaHora: string;
-};
+import { useQuotesStore } from "../../../store/useQuotesStore";
+import { type QuoteFormValues } from "../../../../types/types";
 
 export const QuoteForm: React.FC = () => {
+  const { addQuote } = useQuotesStore();
   const navigate = useNavigate();
   const {
     handleSubmit,
     control,
     reset,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<QuoteFormValues>();
 
   const [open, setOpen] = useState(false);
 
@@ -38,7 +32,12 @@ export const QuoteForm: React.FC = () => {
   };
   const currentDateTime = new Date().toISOString().slice(0, 16);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<QuoteFormValues> = (data) => {
+    const newData = {
+      ...data,
+      id: `id-${Date.now()}`,
+    };
+    addQuote(newData);
     handleClickOpen();
   };
 
@@ -89,7 +88,17 @@ export const QuoteForm: React.FC = () => {
           name="contacto"
           control={control}
           defaultValue=""
-          rules={{ required: "Este campo es obligatorio" }}
+          rules={{
+            required: "Este campo es obligatorio",
+            pattern: {
+              value: /^[0-9]+$/, // Solo números
+              message: "Solo se permiten números",
+            },
+            minLength: {
+              value: 10,
+              message: "Debe tener al menos 10 dígitos",
+            },
+          }}
           render={({ field }) => (
             <TextField
               {...field}
@@ -97,6 +106,10 @@ export const QuoteForm: React.FC = () => {
               fullWidth
               error={!!errors.contacto}
               helperText={errors.contacto ? errors.contacto.message : ""}
+              inputProps={{
+                maxLength: 15, // Opcional: limita el número máximo de dígitos, puedes ajustarlo según necesites
+                inputMode: "numeric", // Muestra el teclado numérico en dispositivos móviles
+              }}
             />
           )}
         />

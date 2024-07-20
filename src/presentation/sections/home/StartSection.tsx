@@ -1,4 +1,4 @@
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, Box } from "@mui/material";
 import PetsIcon from "@mui/icons-material/Pets";
 import dogImage from "../../../assets/gif/dog.gif";
 
@@ -9,6 +9,7 @@ export const StartSection = () => {
       columnSpacing={2}
       sx={{
         height: "100vh",
+        paddingTop: 5,
       }}
     >
       <Grid
@@ -46,6 +47,7 @@ export const StartSection = () => {
           fontWeight={600}
           color="primary"
           sx={{ paddingBottom: 4 }}
+          textAlign="center"
         >
           Veterinaria Patitas
         </Typography>
@@ -54,9 +56,25 @@ export const StartSection = () => {
           Nuestra misión es proporcionar atención veterinaria de alta calidad en
           un ambiente cálido y acogedor.
         </Typography>
-        <Button variant="contained" endIcon={<PetsIcon />}>
-          Agendar cita ahora
-        </Button>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            width: "100%",
+            backgroundImage: "url(../../../assets/png/main-background.png)",
+          }}
+        >
+          <Button variant="contained">Conoce nuestros servicios</Button>
+          <Button
+            variant="contained"
+            endIcon={<PetsIcon />}
+            sx={{ marginTop: 3 }}
+          >
+            Agendar cita ahora
+          </Button>
+        </Box>
       </Grid>
     </Grid>
   );

@@ -21,6 +21,7 @@ export const StartSection = () => {
         alignItems="center"
         sx={(theme) => ({
           [theme.breakpoints.down("md")]: {
+            marginBottom: 3,
             height: "50%",
           },
         })}

@@ -19,17 +19,17 @@ export const Quotes = () => {
             Registro de citas
           </Typography>
 
-          <Grid container columnSpacing={4} rowSpacing={3}>
-            {quotes.length > 0 ? (
-              quotes.map((quote) => (
+          {quotes.length > 0 ? (
+            <Grid container columnSpacing={4} rowSpacing={3}>
+              {quotes.map((quote) => (
                 <Grid item xs={12} md={6} lg={4} key={quote.id}>
                   <QuoteCard quote={quote} />
                 </Grid>
-              ))
-            ) : (
-              <Typography>No hay citas registradas</Typography>
-            )}
-          </Grid>
+              ))}
+            </Grid>
+          ) : (
+            <Typography>No hay citas registradas</Typography>
+          )}
         </Container>
       </Box>
     </div>

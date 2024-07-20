@@ -1,3 +1,9 @@
+import { Container } from "../../components/shared/Container";
+import { StartSection } from "../../sections/home/StartSection";
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Container>
+      <StartSection />
+    </Container>
+  );
 };

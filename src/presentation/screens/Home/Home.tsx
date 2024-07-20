@@ -1,12 +1,18 @@
 import { Container } from "../../components/shared/Container";
+import { QuoteRegister } from "../../sections/home/QuoteRegister/QuoteRegister";
 import { StartSection } from "../../sections/home/StartSection";
+import { Services } from "../../sections/home/services/Services";
 
 export const Home = () => {
   return (
-    <Container>
-      <div>
+    <div>
+      <Container>
         <StartSection />
-      </div>
-    </Container>
+      </Container>
+      <Services />
+      <Container>
+        <QuoteRegister />
+      </Container>
+    </div>
   );
 };

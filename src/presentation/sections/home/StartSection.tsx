@@ -51,7 +51,7 @@ export const StartSection = () => {
         >
           Veterinaria Patitas
         </Typography>
-        <Typography sx={{ paddingY: 3 }}>
+        <Typography sx={{ paddingY: 3, fontWeight: 600 }}>
           Nos dedicamos a ofrecer el mejor cuidado para tus fieles compañeros.
           Nuestra misión es proporcionar atención veterinaria de alta calidad en
           un ambiente cálido y acogedor.
@@ -66,13 +66,27 @@ export const StartSection = () => {
             backgroundImage: "url(../../../assets/png/main-background.png)",
           }}
         >
-          <Button variant="contained">Conoce nuestros servicios</Button>
+          <Button
+            variant="contained"
+            onClick={() =>
+              document.getElementById("services")?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+          >
+            Conoce nuestros servicios
+          </Button>
           <Button
             variant="contained"
             endIcon={<PetsIcon />}
             sx={{ marginTop: 3 }}
+            onClick={() =>
+              document.getElementById("quoteRegister")?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
           >
-            Agendar cita ahora
+            Programar cita ahora
           </Button>
         </Box>
       </Grid>

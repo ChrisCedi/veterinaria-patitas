@@ -24,7 +24,11 @@ export const Header = () => {
           </Box>
           <Box sx={{ display: "flex" }}>
             {routes.map((route) => (
-              <LinkHeader label={route.label!} path={route.path} />
+              <LinkHeader
+                key={route.id}
+                label={route.label!}
+                path={route.path}
+              />
             ))}
           </Box>
         </Box>

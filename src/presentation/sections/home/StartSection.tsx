@@ -58,13 +58,16 @@ export const StartSection = () => {
         </Typography>
 
         <Box
-          sx={{
+          sx={(theme) => ({
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
             width: "100%",
             backgroundImage: "url(../../../assets/png/main-background.png)",
-          }}
+            [theme.breakpoints.down("sm")]: {
+              alignItems: "center",
+            },
+          })}
         >
           <Button
             variant="contained"

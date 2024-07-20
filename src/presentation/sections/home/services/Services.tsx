@@ -32,7 +32,7 @@ export const Services = () => {
             sx={(theme) => ({
               paddingX: 20,
               paddingY: 4,
-              [theme.breakpoints.down("sm")]: {
+              [theme.breakpoints.down("md")]: {
                 paddingX: 4,
                 fontSize: 18,
               },

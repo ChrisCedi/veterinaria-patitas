@@ -5,7 +5,7 @@ import { Services } from "../../sections/home/services/Services";
 
 export const Home = () => {
   return (
-    <div>
+    <>
       <Container>
         <StartSection />
       </Container>
@@ -13,6 +13,6 @@ export const Home = () => {
       <Container>
         <QuoteRegister />
       </Container>
-    </div>
+    </>
   );
 };
